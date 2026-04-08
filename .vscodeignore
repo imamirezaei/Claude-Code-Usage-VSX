@@ -1,0 +1,11 @@
+.github/
+.claude/
+.eslintrc.json
+.prettierrc
+esbuild.config.js
+tsconfig.json
+src/
+node_modules/
+**/*.map
+**/*.ts
+!dist/

@@ -1,0 +1,127 @@
+{
+  "name": "claude-usage",
+  "displayName": "Claude Usage",
+  "description": "Real-time Claude Code rate limit tracker — session & weekly usage, burn rate, and smart alerts.",
+  "version": "0.1.0",
+  "publisher": "your-namespace",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "claude",
+    "claude usage",
+    "anthropic",
+    "usage",
+    "rate-limit",
+    "ai"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-namespace/claude-usage"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "claudeUsage.refresh",
+        "title": "Claude Usage: Refresh Rate Limit"
+      },
+      {
+        "command": "claudeUsage.switchMode",
+        "title": "Claude Usage: Switch Display Mode (Session / Weekly / Both)"
+      },
+      {
+        "command": "claudeUsage.showDetails",
+        "title": "Claude Usage: Show Details"
+      },
+      {
+        "command": "claudeUsage.openOutput",
+        "title": "Claude Usage: Open Output"
+      }
+    ],
+    "configuration": {
+      "title": "Claude Usage",
+      "properties": {
+        "claudeUsage.displayMode": {
+          "type": "string",
+          "enum": [
+            "session",
+            "weekly",
+            "both",
+            "auto"
+          ],
+          "enumDescriptions": [
+            "Show session (5 h) limit only",
+            "Show weekly (7 d) limit only",
+            "Show both limits side by side",
+            "Auto: weekly when session < 30%, otherwise session"
+          ],
+          "default": "session",
+          "description": "Which rate limit window to display in the status bar."
+        },
+        "claudeUsage.warningThreshold": {
+          "type": "number",
+          "default": 70,
+          "minimum": 1,
+          "maximum": 99,
+          "description": "Usage percentage that triggers a yellow warning highlight."
+        },
+        "claudeUsage.criticalThreshold": {
+          "type": "number",
+          "default": 90,
+          "minimum": 1,
+          "maximum": 100,
+          "description": "Usage percentage that triggers a red critical highlight and notification."
+        },
+        "claudeUsage.refreshInterval": {
+          "type": "number",
+          "default": 30,
+          "minimum": 5,
+          "maximum": 300,
+          "description": "How often (in seconds) the countdown timer repaints."
+        },
+        "claudeUsage.showCountdown": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show time-until-reset countdown in the status bar."
+        },
+        "claudeUsage.notificationsEnabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show notification popups when usage reaches warning or critical thresholds."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build": "node esbuild.config.js",
+    "watch": "node esbuild.config.js --watch",
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "package": "vsce package --no-dependencies",
+    "publish:ovsx": "ovsx publish --no-dependencies"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "esbuild": "^0.20.0",
+    "eslint": "^8.57.0",
+    "ovsx": "^0.9.0",
+    "prettier": "^3.2.0",
+    "@vscode/vsce": "^2.24.0",
+    "typescript": "^5.4.0"
+  },
+  "dependencies": {
+    "keytar": "^7.9.0"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:marketplace.visualstudio.com)",
+      "WebFetch(domain:open-vsx.org)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:www.antigravity.dev)",
+      "Bash(npm -v)",
+      "Bash(wait)",
+      "Bash(npx vsce:*)",
+      "Bash(~/.antigravity/antigravity/bin/antigravity --install-extension \"/Users/macbook/Projects/Claude Usage Extension/claude-usage-0.1.0.vsix\")"
+    ]
+  }
+}
