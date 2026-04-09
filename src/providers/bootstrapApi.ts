@@ -68,7 +68,7 @@ async function fetchOauthUsage(accessToken: string): Promise<BootstrapFetchResul
       Authorization: `Bearer ${accessToken}`,
       "anthropic-beta": OAUTH_BETA_HEADER,
       "Content-Type": "application/json",
-      "User-Agent": "claude-usage-vscode/0.1.0",
+      "User-Agent": "claude-code-usage-vsx/0.1.1",
     });
 
     if (response.error) {
@@ -114,7 +114,7 @@ async function fetchLegacyEndpoint(
   const response = await requestJson(path, {
     Authorization: `Bearer ${token}`,
     "Content-Type": "application/json",
-    "User-Agent": "claude-usage-vscode/0.1.0",
+    "User-Agent": "claude-code-usage-vsx/0.1.1",
   });
 
   if (response.statusCode !== 200) {

@@ -37,7 +37,8 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
       await showDetailsQuickPick(
         dataProvider.getData(),
         config,
-        () => dataProvider.manualRefresh()
+        () => dataProvider.manualRefresh(),
+        context.extension.id
       );
     }),
 

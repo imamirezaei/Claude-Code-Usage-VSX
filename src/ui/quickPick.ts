@@ -23,7 +23,8 @@ const MODE_CYCLE: DisplayMode[] = ["session", "weekly", "both"];
 export async function showDetailsQuickPick(
   data: UsageData,
   config: ExtensionConfig,
-  onRefresh: () => Promise<void>
+  onRefresh: () => Promise<void>,
+  extensionId: string
 ): Promise<void> {
   const items: vscode.QuickPickItem[] = [];
   const currentMode = config.displayMode;
@@ -96,7 +97,7 @@ export async function showDetailsQuickPick(
   } else if (pick.label.includes("Open settings")) {
     vscode.commands.executeCommand(
       "workbench.action.openSettings",
-      "@ext:your-namespace.claude-usage"
+      `@ext:${extensionId}`
     );
   } else if (pick.label.includes("Open output")) {
     vscode.commands.executeCommand("claudeUsage.openOutput");

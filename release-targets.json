@@ -1,0 +1,14 @@
+{
+  "openvsx": {
+    "name": "claude-usage",
+    "displayName": "Claude Usage",
+    "publisher": "imamirezaei",
+    "outputDir": "releases/open-vsx"
+  },
+  "vscode": {
+    "name": "claude-code-usage-vsx",
+    "displayName": "Claude Code Usage Monitoring",
+    "publisher": "imamirezaei",
+    "outputDir": "releases/vscode"
+  }
+}

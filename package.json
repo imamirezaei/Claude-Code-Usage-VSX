@@ -1,8 +1,8 @@
 {
-  "name": "claude-usage",
-  "displayName": "Claude Usage",
+  "name": "claude-code-usage-vsx",
+  "displayName": "Claude Code Usage Monitoring",
   "description": "Real-time Claude Code rate limit tracker — session & weekly usage, burn rate, and smart alerts.",
-  "version": "0.1.0",
+  "version": "0.1.3",
   "publisher": "imamirezaei",
   "license": "MIT",
   "engines": {
@@ -23,6 +23,11 @@
     "onStartupFinished"
   ],
   "main": "./dist/extension.js",
+  "files": [
+    "dist/**",
+    "assets/icon.png",
+    "README.md"
+  ],
   "icon": "assets/icon.png",
   "repository": {
     "type": "git",
@@ -107,7 +112,10 @@
     "watch": "node esbuild.config.js --watch",
     "lint": "eslint src --ext .ts",
     "format": "prettier --write \"src/**/*.ts\"",
-    "package": "vsce package --no-dependencies",
+    "package": "npm run package:vscode",
+    "package:openvsx": "node scripts/package-marketplace.js openvsx",
+    "package:vscode": "node scripts/package-marketplace.js vscode",
+    "package:all": "node scripts/package-marketplace.js all",
     "publish:ovsx": "ovsx publish --no-dependencies"
   },
   "devDependencies": {

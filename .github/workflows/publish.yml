@@ -28,17 +28,17 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Package VSIX
-        run: npm run package
+      - name: Package Open VSX VSIX
+        run: npm run package:openvsx
 
       - name: Publish to Open VSX
-        run: npm run publish:ovsx
+        run: npx ovsx publish releases/open-vsx/*.vsix -p "$OVSX_PAT"
         env:
           OVSX_PAT: ${{ secrets.OVSX_PAT }}
 
       - name: Upload VSIX artifact
         uses: actions/upload-artifact@v4
         with:
-          name: claude-usage-${{ github.ref_name }}.vsix
-          path: "*.vsix"
+          name: open-vsx-${{ github.ref_name }}
+          path: "releases/open-vsx/*.vsix"
           retention-days: 90
