@@ -54,8 +54,3 @@ npm install
 npm run build
 npx vsce package --no-dependencies
 ```
-
-## License
-
-MIT
-# Claude-Code-Usage-VSX

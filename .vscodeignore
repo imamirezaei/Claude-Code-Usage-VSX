@@ -9,3 +9,4 @@ node_modules/
 **/*.map
 **/*.ts
 !dist/
+assets/icon.svg
